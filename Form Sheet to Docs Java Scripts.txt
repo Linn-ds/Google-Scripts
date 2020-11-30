@@ -48,7 +48,8 @@ function createNewGoogleDocs() {
     const body = doc.getBody();
     
     //In this line we do some friendly date formatting, that may or may not work for you locale
-    // const friendlyDate = new Date(row[3]).toLocaleDateString();
+    //မှတ်ထားရမှာက dateထည့်မယ်ဆို အောက်အကြောင်းက ' //' ကိုဖြုတ်ပြီးထည့်၊ index ထည့်။ body replace အောက်ဆုံးအကြောင်းကိုကြည့်
+    // const friendlyDate = new Date(row[3]).toLocaleDateString(); 
     
     //In these lines, we replace our replacement tokens with values from our spreadsheet row
     //ကြိုက်သလောက်ထည့်လို့ရတယ် Templateမှာ နာမည်တွေပေးခဲ့တာတွေကို ရေးပြီး sheet က data ကိုထည့်မှာ၊ data ကို row Index နဲ့ ခေါ််တာ
@@ -61,6 +62,7 @@ function createNewGoogleDocs() {
     body.replaceText('{{Age}}', row[5]);
     body.replaceText('{{ph}}', row[8]);
     body.replaceText('{{email}}', row[1]);
+//body.replaceText('{{Hire Date}}', friendlyDate);
     
     //We make our changes permanent by saving and closing the document
     doc.saveAndClose();
